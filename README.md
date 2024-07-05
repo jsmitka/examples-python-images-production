@@ -27,3 +27,20 @@ Examples are written for the following package managers:
 See the `README.md` in each subfolder for more information and instructions on running the example.
 
 Don't see your favourite tool? Create an issue and I will try to add an example for it!
+
+
+## Checking for security updates in an existing Docker image
+
+This repository also includes a script to check if there are any security updates for your existing Docker image.
+The script can be used in a scheduled job to trigger image rebuild when new security updates are released.
+
+This script works for all images based on Debian or Ubuntu. Other Linux distributions are not supported.
+
+To use this script, call:
+
+```bash
+./check-image-updates.sh <image tag>
+```
+
+The script terminates with exit code 0 if there is at least one security update that can be applied, and exit code
+1 if there are no security updates.
