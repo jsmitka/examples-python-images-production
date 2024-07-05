@@ -1,0 +1,23 @@
+[project]
+name = "my-app"
+version = "1.0.0"
+description = "An example Flask application for demonstrating best-practices when writing production images for Python apps."
+authors = [
+    {name = "Jan Smitka", email = "jan.smitka@lynt.cz"},
+]
+dependencies = [
+    "Flask>=3.0.3",
+    "mysqlclient>=2.2.4",
+    "gunicorn>=22.0.0",
+]
+requires-python = ">=3.8"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=8.2.2",
+]

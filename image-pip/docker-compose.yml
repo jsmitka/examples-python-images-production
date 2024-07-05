@@ -1,0 +1,32 @@
+name: example-image-pip
+services:
+  # Production image
+  # Uses gunicorn to run the app.
+  example_prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "127.0.0.1:8000:8000"
+  # Development image
+  # Mounts the local sources and uses flask development server.
+  example_dev:
+    build:
+      context: .
+      target: development
+    entrypoint:
+      - "flask"
+      - "--app"
+      - "my_app.wsgi"
+      - "run"
+      - "--debug"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8000"
+    ports:
+      - "127.0.0.1:8001:8000"
+    volumes:
+      - type: bind
+        source: .
+        target: /home/app/project
